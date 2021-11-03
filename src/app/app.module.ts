@@ -1,16 +1,19 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+import { ItemsComponent } from './items/items.component'; // <-- NgModel lives here
 import { AppComponent } from './app.component';
+import { HeroesComponent } from './heroes/heroes.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeroesComponent,
+    ItemsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
