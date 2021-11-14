@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Item  } from '../items'
-import { ITEMS } from '../mock-items';
+import { Item  } from '../item'
+import { Items } from '../mock-items';
 
 @Component({
   selector: 'app-items',
@@ -8,7 +8,7 @@ import { ITEMS } from '../mock-items';
   styleUrls: ['./items.component.css']
 })
 export class ItemsComponent implements OnInit {
-  item = ITEMS;
+  item = Items;
   selectedItem?: Item;
 
   constructor() { }

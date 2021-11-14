@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Item } from '../items';
+import { Item } from '../item';
 
 @Component({
   selector: 'app-item-detail',
