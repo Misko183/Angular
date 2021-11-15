@@ -13,3 +13,8 @@ export const Items: Item[] = [
   { id: 9, name: 'Armor', price: 200 },
 
 ];
+
+export const ItemsNo: Item[] = [
+  { id: 10, name: 'Diamond Sword', price: 500 },
+  { id: 11, name: 'Fire Bow', price: 459 },
+]
