@@ -10,6 +10,7 @@ import { MessageService } from '../message.service';
   templateUrl: './items.component.html',
   styleUrls: ['./items.component.css']
 })
+
 export class ItemsComponent implements OnInit {
 
   items: Item[] = [];
