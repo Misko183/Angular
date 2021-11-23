@@ -3,6 +3,11 @@ import { Hero } from '../hero';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { HeroService } from '../hero.service';
+import { ItemsNo } from '../mock-items';
+import { ItemsComponent } from '../items/items.component';
+import { Items } from '../mock-items';
+import { Item } from '../item';
+
 
 @Component({
   selector: 'app-hero-detail',
@@ -21,12 +26,20 @@ export class HeroDetailComponent implements OnInit {
     private location: Location
   ) {}
 
+  click(): void {
+    
+  }
+
   ngOnInit(): void {
     this.getHero();
   }
 
   goBack(): void {
     this.location.back();
+  }
+
+  buyItem(): void {
+    this.buyItem();
   }
   
   getHero(): void {
