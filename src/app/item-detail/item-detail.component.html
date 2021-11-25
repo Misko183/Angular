@@ -1,11 +1,5 @@
 <div *ngIf="item">
-
-    <h4>Items owned:</h4>
-    <div><span>Item name: </span>{{item.name}}</div>
-    <div><span>id: </span>{{item.id}}</div>
-    <div><span>Item price: </span>{{item.price}}  </div>
-    <button> BUY </button>
-
-    
-  
-  </div>
+  <h2>{{item.name | uppercase}} Details</h2>
+  <div id="itemId"><span>id: </span>{{item.id}}</div>
+  <div id="itemPrice"><span>price: </span>{{item.price}}</div>    
+</div>

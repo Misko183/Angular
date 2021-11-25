@@ -1,11 +1,11 @@
-<h2>My Items</h2>
+<h2>Items:</h2>
 <ul class="items">
-<li *ngFor="let item of items"
-[class.selected]="item === selectedItem"
-(click)="onSelect(item)">
-    <span class="badge">{{item.id}}</span> {{item.name}}
-</li>
+    <li *ngFor= "let item of items"
+        [class.selected]="item === selectedItem"
+        (click)="onSelect(item)">
+        <span class="badge">{{item.id}}</span> <span id="itemName"> {{item.name}}</span>
+    </li>
 </ul>
 
-<app-item-detail [item]="selectedItem"></app-item-detail>
 
+<app-item-detail [item]="selectedItem"></app-item-detail>

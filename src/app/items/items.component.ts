@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ItemsNo } from '../mock-items';
+import { Items, ItemsNo } from '../mock-items';
 import { Item } from '../item';
 import { ItemService } from '../item.service';
 import { Observable, of } from 'rxjs';
@@ -14,6 +14,11 @@ import { MessageService } from '../message.service';
   export class ItemsComponent implements OnInit {
     
     items = ItemsNo;
+
+    getItems(): void {
+      this.itemService.getItems()
+          .subscribe(items => this.items = items);
+    }
     
     selectedItem?: Item;
     onSelect(item: Item): void {

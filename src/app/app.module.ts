@@ -9,6 +9,7 @@ import { ItemDetailComponent } from './item-detail/item-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { FreeItemsComponent } from './free-items/free-items.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ItemDetailComponent,
     MessagesComponent,
     DashboardComponent,
+    FreeItemsComponent,
   ],
   imports: [
     BrowserModule,

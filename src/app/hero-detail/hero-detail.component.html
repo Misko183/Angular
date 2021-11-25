@@ -1,18 +1,26 @@
-<div *ngIf="hero">
-  <h2>{{hero.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{hero.id}}</div>
-  <div>
-    <label for="hero-name">Hero name: </label>
-    <input id="hero-name" [(ngModel)]="hero.name" placeholder="Hero name"/>
-    <div><span>Money: </span>{{hero.money}}</div>
-    <h2>{{hero.name | uppercase}} itemy:</h2>
-    <ul class="items">
-      <li *ngFor="let item of hero.items">
-          <span class="badge">{{item.id}}</span> {{item.name}}
-      </li>
-    </ul>
-    <button (click)="click()"><a routerLink="/free-items/{{hero.id}}">Buy Item</a></button>
+<div class="container">
+  <div *ngIf="hero">
+    <h2>{{ hero.name | uppercase }} Details</h2>
+    <div><span>id: </span>{{ hero.id }}</div>
+
+    <div>
+      <label for="hero-name">Hero name: </label>
+      <input id="hero-name" [(ngModel)]="hero.name" placeholder="Hero name" />
+    </div>
+    <div>
+      <span><label>Money: </label> </span>{{ hero.money }}
+      <button (click)="click()"><a routerLink="/free-items/{{hero.id}}">Buy Item</a></button>
+    </div>
+   
+
+      <div class="items" *ngFor="let item of hero.items">
+        
+            <app-item-detail [item]="item"></app-item-detail>
+         
+      </div>
+
+      
   </div>
+
   <button (click)="goBack()">go back</button>
 </div>
-
