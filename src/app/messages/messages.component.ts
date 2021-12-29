@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from '../message.service';
+import { MatButtonModule } from '@angular/material/button' 
 
 @Component({
   selector: 'app-messages',

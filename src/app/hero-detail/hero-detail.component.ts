@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
-import { ItemsNo } from '../mock-items';
+import { ItemsNo, Items } from '../mock-items';
+import { Item } from '../item';
+import { ReplaySubject } from 'rxjs';
 
 
 @Component({
@@ -13,21 +15,19 @@ import { ItemsNo } from '../mock-items';
 })
 
 export class HeroDetailComponent implements OnInit {
-  
-  hero: Hero | undefined;
 
-  
+  @Input() hero!: Hero;
+  itemsFree = ItemsNo;
+
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
     private location: Location
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getHero();
-    
   }
-  click(): void {  }
 
   getHero(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
@@ -39,4 +39,28 @@ export class HeroDetailComponent implements OnInit {
     this.location.back();
   }
 
+  click(): void { }
+
+  sellItems(item: Item): void {
+    if(item.isAvailable == false){
+      this.hero.money += item.price;
+      item.isAvailable = true;
+      this.itemsFree.push(item);
+      this.deleteMsg(item);
+    }
+  }
+
+  deleteMsg(item:Item) {
+    const index: number = this.hero.items.indexOf(item);
+    if (index !== -1) {
+        this.hero.items.splice(index, 1);
+    }
+  }
+
+  save(): void {
+    if (this.hero) {
+      this.heroService.updateHero(this.hero)
+        .subscribe(() => this.goBack());
+    }
+  }
 }

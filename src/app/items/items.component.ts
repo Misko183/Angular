@@ -12,22 +12,39 @@ import { MessageService } from '../message.service';
   })
   
   export class ItemsComponent implements OnInit {
-    
-    items = ItemsNo;
 
+    items = Items;
+  
+    selectedItem?: Item;
+  
+    constructor(private itemService: ItemService, private messageService: MessageService) { }
+  
+    ngOnInit(): void {
+      this.getItems();
+    }
+  
+    onSelect(item: Item): void{
+      this.selectedItem = item;
+      this.messageService.add(`ItemsComponent: Selected item id=${item.id}`)
+    }
+  
     getItems(): void {
       this.itemService.getItems()
-          .subscribe(items => this.items = items);
+        .subscribe(items => this.items = items);
     }
-    
-    selectedItem?: Item;
-    onSelect(item: Item): void {
-      this.selectedItem = item;
-      this.messageService.add('ItemsComponent: Selected item id=${item.id}');
+  
+    add(name: string): void {
+      name = name.trim();
+      if (!name) { return; }
+      this.itemService.addItem({ name } as Item)
+        .subscribe(item => {
+          this.items.push(item);
+      });
     }
-    constructor(
-      private itemService: ItemService,
-      private messageService: MessageService) { }
-    
-    ngOnInit(): void { }
-}
+  
+    delete(item: Item): void {
+      this.items = this.items.filter(h => h !== item);
+      this.itemService.deleteItem(item.id).subscribe();
+    }
+  
+  }
