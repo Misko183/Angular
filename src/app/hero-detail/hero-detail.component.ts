@@ -15,19 +15,22 @@ import { ReplaySubject } from 'rxjs';
 })
 
 export class HeroDetailComponent implements OnInit {
+  hero: Hero;
+ 
 
-  @Input() hero!: Hero;
-  itemsFree = ItemsNo;
+  freeItems: any;
 
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
     private location: Location
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getHero();
+    
   }
+  click(): void {  }
 
   getHero(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
@@ -39,28 +42,27 @@ export class HeroDetailComponent implements OnInit {
     this.location.back();
   }
 
-  click(): void { }
-
-  sellItems(item: Item): void {
-    if(item.isAvailable == false){
-      this.hero.money += item.price;
-      item.isAvailable = true;
-      this.itemsFree.push(item);
-      this.deleteMsg(item);
-    }
-  }
-
-  deleteMsg(item:Item) {
-    const index: number = this.hero.items.indexOf(item);
-    if (index !== -1) {
-        this.hero.items.splice(index, 1);
-    }
-  }
-
   save(): void {
     if (this.hero) {
-      this.heroService.updateHero(this.hero)
-        .subscribe(() => this.goBack());
+      this.heroService.updateHero(this.hero).subscribe(() => this.goBack());
     }
   }
+
+  sellItem(item: Item) {
+    this.hero.money += item.price;
+    item.isAvailable = true;
+    ItemsNo.push(item);
+    this.deleteItem(item);
+  }
+
+  deleteItem(item: Item) {
+    const itemIndex: number = this.hero.items.indexOf(item);
+    if(itemIndex !== -1){
+      this.hero.items.splice(itemIndex, 1);
+    }
+  }
+
+
+  
+ 
 }

@@ -17,18 +17,24 @@ export class FreeItemsComponent implements OnInit {
 
   freeItems = ItemsNo;
   hero: Hero;
+  
+
 
   constructor(
     private itemService: ItemService,
     private heroService: HeroService,
     private route: ActivatedRoute,
-    private location: Location
-  ) { }
+    private location: Location ) {  }
 
+  ngOnInit(): void {
+    this.getItems();
+    this.getHero();
+  }
+  
   getItems(): void {
     this.itemService.getItems()
         .subscribe(items => this.freeItems = items);
-  } 
+  }
 
   getHero(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
@@ -48,12 +54,4 @@ export class FreeItemsComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
-
-  ngOnInit(): void {
-    this.getItems();
-    this.getHero();
-  }
-
-  
-
 }

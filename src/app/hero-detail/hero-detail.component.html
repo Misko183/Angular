@@ -1,26 +1,26 @@
 <div class="container">
   <div *ngIf="hero">
     <h2>{{ hero.name | uppercase }} Details</h2>
-    
+    <div><span>id: </span>{{ hero.id }}</div>
 
-    <div>
-      <mat-form-field>
-        <mat-icon></mat-icon>
-        <span>id: </span>{{ hero.id }}<br>
-        <mat-icon></mat-icon>
+    
+      <mat-form-field class="example-full-width" appearance="fill">
         <label for="hero-name">Hero name: </label>
-        <input id="hero-name" [(ngModel)]="hero.name" placeholder="Hero name" />
+        <input matInput id="hero-name" [(ngModel)]="hero.name">
       </mat-form-field>
-    </div>
+  
     <div>
       <span><label>Money: </label> </span>{{ hero.money }}
-      <button mat-raised-button color="primary" (click)="click()"><a routerLink="/free-items/{{hero.id}}">Buy Item</a></button>
-      <button mat-raised-button color="primary" (click)="goBack()">go back</button>
-      <button mat-raised-button color="secondary"(click)="save()">Save</button>
-
+      <button mat-raised-button color="secondary" class="buttons" (click)="click()"><a routerLink="/free-items/{{hero.id}}">Buy Item</a></button>
     </div>
-    <div class="items" *ngFor="let item of hero.items">
-      <app-item-detail [item]="item" (deleteEvent)="sellItems(item)"></app-item-detail> 
-    </div> 
+   
+
+      <div color="primary" class="items" *ngFor="let item of hero.items">
+            <app-item-detail mat-stroked-button color="secondary" [item]="item" (deleteEvent)="sellItem(item)"></app-item-detail>        
+      </div>
+
+      
   </div>
+  <button class="buttons" mat-flat-button color="primary" (click)="goBack()">go back</button>
+  <button class="buttons" mat-flat-button color="primary" (click)="save()">save</button>
 </div>
