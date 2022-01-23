@@ -22,3 +22,7 @@ label {
     color: #ccc;
     cursor: auto;
   }
+
+  .btn {
+    margin: 20px 30px;
+  }

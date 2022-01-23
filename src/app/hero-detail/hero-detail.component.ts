@@ -48,21 +48,27 @@ export class HeroDetailComponent implements OnInit {
     }
   }
 
-  sellItem(item: Item) {
-    this.hero.money += item.price;
-    item.isAvailable = true;
-    ItemsNo.push(item);
-    this.deleteItem(item);
+  sellItem(item: Item): void {
+    if(item.isAvailable == false){
+      this.hero.money += item.price;
+      item.isAvailable = true;
+      this.freeItems.push(item);
+      this.deleteMsg(item);
+    }
   }
 
-  deleteItem(item: Item) {
+  deleteItem(item:Item) {
     const itemIndex: number = this.hero.items.indexOf(item);
     if(itemIndex !== -1){
       this.hero.items.splice(itemIndex, 1);
     }
+  } 
+
+  deleteMsg(item:Item) {
+    const index: number = this.hero.items.indexOf(item);
+    if (index !== -1) {
+        this.hero.items.splice(index, 1);
+    }
   }
 
-
-  
- 
 }

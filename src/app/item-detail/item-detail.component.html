@@ -1,12 +1,24 @@
-<div class="itemDetail" *ngIf="item of items">
+<div class="itemDetail" *ngIf="item; of: items">
+  <h2>{{ item.name | uppercase }} Details</h2>
+  <div>
+    <label for="item-name">Item name: </label>
+    <label>{{ item.name }}</label>
+  </div>
+  <div id="itemId"><span>id: </span>{{ item.id }}</div>
+  <div for="itemPrice">
+    <span>price: </span><label>{{ item.price }}</label>
+  </div>
 
-  <h2>{{item.name | uppercase}} Details</h2>
-  <div >
-      <label for="item-name">Item name: </label>
-      <input id="item-name" [(ngModel)]="item.name" placeholder="Item name" />
-    </div>
-  <div  id="itemId"><span>id: </span>{{item.id}}</div>
-  <div for="itemPrice"><span>price: </span><input id="itemPrice" [(ngModel)]="item.price" placeholder="Item price" /></div>  
-  <button class="btn" mat-stroked-button color="primary" (click)="save()">save</button>  
-  <button class="btn" mat-stroked-button color="secondary" *ngIf="!item.isAvailable" (click)="callParrentDelete()" >SALE!</button>
+  <button class="btn" mat-stroked-button color="primary" (click)="save()">
+    save
+  </button>
+  <button
+    class="btn"
+    mat-stroked-button
+    color="secondary"
+    *ngIf="!item.isAvailable"
+    (click)="callParrentDelete()"
+  >
+    SALE!
+  </button>
 </div>

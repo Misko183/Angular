@@ -3,24 +3,39 @@
     <h2>{{ hero.name | uppercase }} Details</h2>
     <div><span>id: </span>{{ hero.id }}</div>
 
-    
-      <mat-form-field class="example-full-width" appearance="fill">
-        <label for="hero-name">Hero name: </label>
-        <input matInput id="hero-name" [(ngModel)]="hero.name">
-      </mat-form-field>
-  
+    <mat-form-field class="example-full-width" appearance="fill">
+      <label for="hero-name">Hero name: </label>
+      <label>{{ hero.name }}</label>
+    </mat-form-field>
+
     <div>
-      <span><label>Money: </label> </span>{{ hero.money }}
-      <button mat-raised-button color="secondary" class="buttons" (click)="click()"><a routerLink="/free-items/{{hero.id}}">Buy Item</a></button>
+      <span
+        ><label>Money: </label> <label>{{ hero.money }}</label></span
+      ><br />
+      <span
+        ><label>Lives: </label> <label>{{ hero.life }}</label></span
+      ><br />
+      <span
+        ><label>Strenght: </label> <label>{{ hero.strenght }}</label></span
+      ><br />
     </div>
-   
 
-      <div color="primary" class="items" *ngFor="let item of hero.items">
-            <app-item-detail mat-stroked-button color="secondary" [item]="item" (deleteEvent)="sellItem(item)"></app-item-detail>        
-      </div>
-
-      
+    <div color="primary" class="items" *ngFor="let item of hero.items">
+      <app-item-detail
+        mat-stroked-button
+        color="secondary"
+        [item]="item"
+        (deleteEvent)="sellItem(item)"
+      ></app-item-detail>
+    </div>
   </div>
-  <button class="buttons" mat-flat-button color="primary" (click)="goBack()">go back</button>
-  <button class="buttons" mat-flat-button color="primary" (click)="save()">save</button>
+  <button mat-raised-button color="primary" class="buttons" (click)="click()">
+    <a routerLink="/free-items/{{ hero.id }}">Buy Item</a>
+  </button>
+  <button class="buttons" mat-flat-button color="primary" (click)="goBack()">
+    go back
+  </button>
+  <button class="buttons" mat-flat-button color="primary" (click)="save()">
+    save
+  </button>
 </div>
