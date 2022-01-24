@@ -20,6 +20,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
+import { HeroFormComponent } from './hero-form/hero-form.component';
+import { ItemFormComponent } from './item-form/item-form.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import {MatIconModule} from '@angular/material/icon';
     FreeItemsComponent,
     HeroSearchComponent,
     ItemSearchComponent,
+    HeroFormComponent,
+    ItemFormComponent,
   ],
   imports: [
     BrowserModule,

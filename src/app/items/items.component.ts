@@ -4,6 +4,8 @@ import { Item } from '../item';
 import { ItemService } from '../item.service';
 import { Observable, of } from 'rxjs';
 import { MessageService } from '../message.service';
+import { FormControl } from '@angular/forms';
+import { MatSelectChange } from '@angular/material/select';
 
 @Component({
     selector: 'app-items',
@@ -46,5 +48,4 @@ import { MessageService } from '../message.service';
       this.items = this.items.filter(h => h !== item);
       this.itemService.deleteItem(item.id).subscribe();
     }
-  
   }

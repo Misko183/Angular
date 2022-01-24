@@ -8,3 +8,13 @@ export interface Hero {
     life: number;
     strenght: number;
   }
+
+  export class HeroForm {
+    constructor(
+    public id: number,
+    public name: string,
+    public money: number,
+    public life: number,
+    public strenght: number,
+    ){}
+  }
