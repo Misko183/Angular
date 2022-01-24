@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-
 import { Hero, HeroForm } from '../hero';
-import { Item } from '../item';
 import { HeroService } from '../hero.service';
 
 @Component({
@@ -15,7 +13,7 @@ export class HeroFormComponent {
     private heroService: HeroService) { }
 
   heroes: HeroForm[] = [];
-  hero: Hero[]=[];
+  hero: Hero[] = [];
 
   id!: number;
   name!: string;

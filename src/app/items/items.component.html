@@ -1,14 +1,7 @@
 <h2>My Items</h2>
 <app-item-search></app-item-search>
 
-<div>
-  <label for="new-item">Item name: </label>
-  <input id="new-item" #itemName />
-
-  <button class="add-button" (click)="add(itemName.value); itemName.value=''">
-    Add Item
-  </button>
-</div>
+<app-item-form></app-item-form>
 
 <ul class="items">
   <li *ngFor="let item of items">

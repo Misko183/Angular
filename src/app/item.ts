@@ -4,3 +4,11 @@ export interface Item {
     price: number;
     isAvailable: boolean;
   }
+
+export class ItemForm {
+  constructor(
+    public id: number,
+    public name: string,
+    public price: number,
+  ) {}
+}
