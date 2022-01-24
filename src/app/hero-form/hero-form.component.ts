@@ -29,7 +29,7 @@ export class HeroFormComponent {
     this.submitted = true;    
   }
 
-  addHero() {
+  addHero(): void {
     this.heroService.addHero(this.model as Hero)
       .subscribe(hero => {
         this.heroes.push(hero);
